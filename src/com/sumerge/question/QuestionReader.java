@@ -17,7 +17,6 @@ public class QuestionReader {
         }
     }
 
-
     public static Question convertLineToQuestion(String line) {
         List<String> parts = List.of(line.split(";"));
         String question = parts.get(0);
@@ -25,9 +24,5 @@ public class QuestionReader {
         String answer = parts.get(5);
 
         return new Question(question, choices, answer);
-    }
-
-    public int getNumberOfQuestions(String filePath) throws IOException {
-        return (int) Files.lines(Paths.get(filePath)).count();
     }
 }
