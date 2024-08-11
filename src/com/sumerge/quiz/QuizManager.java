@@ -28,13 +28,13 @@ public class QuizManager {
         quiz = new Quiz();
         quiz.setQuizSize(quizSize);
         generateQuiz(questionBankPath, quizSize);
-        quiz.setAnswerStatus(displayNextQuestion());
+        displayNextQuestion();
 
         while (!quiz.getAnswerStatus().equals(AnswerStatus.STOP)) {
             user.update_score(answerStatusMapper.mapStatus(quiz.getAnswerStatus()));
             waitBetweenQuestions(waitTime);
             printUtil.printScore(user.get_score());
-            quiz.setAnswerStatus(displayNextQuestion());
+            displayNextQuestion();
         }
     }
 
@@ -49,13 +49,16 @@ public class QuizManager {
         quiz.setQuestions(questionsList);
     }
 
-    public AnswerStatus displayNextQuestion() {
+    public void displayNextQuestion() {
         if (quiz.currentQuestionNumber < quiz.getQuizSize()) {
             Question question = quiz.getCurrentQuestion();
             System.out.print(question);
             quiz.incrementCurrentQuestionNumber();
-            return checkAnswer(question);
-        } else return AnswerStatus.STOP;
+            checkAnswer(question);
+        }
+        else {
+            quiz.setAnswerStatus(AnswerStatus.STOP);
+        }
     }
 
     public AnswerStatus checkAnswer(Question question) {
