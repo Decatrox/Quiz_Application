@@ -5,12 +5,10 @@ import com.sumerge.mapper.AnswerStatusMapper;
 import com.sumerge.question.Question;
 import com.sumerge.question.QuestionReader;
 import com.sumerge.user.User;
+import com.sumerge.util.Config;
 import com.sumerge.util.PrintUtil;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +21,7 @@ public class QuizManager {
     private final QuestionReader questionReader = new QuestionReader();
     private final Scanner scanner = new Scanner(System.in);
     private final PrintUtil printUtil = new PrintUtil();
+    private final int waitTime = Config.getWaitTime();
 
 
     public void newQuiz(String questionBankPath, int quizSize, User user) throws InterruptedException, IOException {
@@ -33,15 +32,13 @@ public class QuizManager {
 
         while (!quiz.getAnswerStatus().equals(AnswerStatus.STOP)) {
             user.update_score(answerStatusMapper.mapStatus(quiz.getAnswerStatus()));
-            wait_for_read(1000);
+            waitBetweenQuestions(waitTime);
             printUtil.printScore(user.get_score());
             quiz.setAnswerStatus(displayNextQuestion());
         }
     }
 
-
-
-    private void wait_for_read (int time) throws InterruptedException {
+    private void waitBetweenQuestions(int time) throws InterruptedException {
         Thread.sleep(time);
     }
 
@@ -52,38 +49,14 @@ public class QuizManager {
         quiz.setQuestions(questionsList);
     }
 
-
-    public void addQuestions(String filename, String question, String option1, String option2, String option3, String option4, String answer) throws IOException {
-        try (Writer output = new BufferedWriter(new FileWriter(filename, true))) {
-            String formattedQuestion = String.join(question, option1, option2, option3, option4);
-            output.append(formattedQuestion).append("\n");
-        }
-    }
-
-
     public AnswerStatus displayNextQuestion() {
         if (quiz.currentQuestionNumber < quiz.getQuizSize()) {
             Question question = quiz.getCurrentQuestion();
-            displayQuestion(question);
+            System.out.print(question);
             quiz.incrementCurrentQuestionNumber();
             return checkAnswer(question);
         } else return AnswerStatus.STOP;
     }
-
-
-    private void displayQuestion(Question question) {
-        System.out.println("\n" + question.getQuestionStatement());
-        String[] choices = question.getChoices();
-        char option = 'a';
-
-        for (String choice : choices) {
-            System.out.println(option + ". " + choice);
-            option++;
-        }
-
-        System.out.print("Answer: ");
-    }
-
 
     public AnswerStatus checkAnswer(Question question) {
         String playerInput = scanner.nextLine().trim().toLowerCase();

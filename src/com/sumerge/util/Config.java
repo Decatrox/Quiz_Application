@@ -11,7 +11,7 @@ public class Config {
         try (FileInputStream input = new FileInputStream(workingDir + "/src/resources/config.properties")) {
             properties.load(input);
         } catch (IOException e) {
-            System.out.println(e.getMessage());;
+            throw new RuntimeException("Configuration file not found or cannot be loaded");
         }
     }
 
@@ -25,5 +25,9 @@ public class Config {
 
     public static int getQuizSize() {
         return Integer.parseInt(properties.getProperty("quizSize"));
+    }
+
+    public static int getWaitTime() {
+        return Integer.parseInt(properties.getProperty("waitTime"));
     }
 }

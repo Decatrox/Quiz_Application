@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13035e36-b498-453e-82f1-15f572cfa5f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/enums/AnswerStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/mapper/AnswerStatusMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/question/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/quiz/Quiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/quiz/QuizManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/util/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/util/PrintUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sumerge/util/StoreUtil.java" afterDir="false" />
+    <list default="true" id="13035e36-b498-453e-82f1-15f572cfa5f7" name="Changes" comment="Cleaned and Optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Resources/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Resources/scores.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Resources/scores.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sumerge/GenerateRandoms.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sumerge/Question.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sumerge/QuestionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sumerge/question/QuestionReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sumerge/Quiz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sumerge/QuizApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sumerge/QuizApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sumerge/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sumerge/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sumerge/question/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sumerge/question/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sumerge/quiz/QuizManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sumerge/quiz/QuizManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sumerge/util/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sumerge/util/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,11 +112,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1723379580128</updated>
-      <workItem from="1723379581372" duration="20836000" />
+      <workItem from="1723379581372" duration="21931000" />
     </task>
+    <task id="LOCAL-00001" summary="Cleaned and Optimized">
+      <option name="closed" value="true" />
+      <created>1723403204328</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723403204328</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Cleaned and Optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned and Optimized" />
   </component>
 </project>

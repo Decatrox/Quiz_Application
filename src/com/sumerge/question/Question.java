@@ -12,10 +12,6 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
-    public String getQuestionStatement() {
-        return questionStatement;
-    }
-
     public String[] getChoices() {
         return choices;
     }
@@ -34,11 +30,14 @@ public class Question {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(questionStatement).append(" ");
+        sb.append("\n").append(questionStatement).append("\n");
+        char option = 'a';
+
         for (String choice : choices) {
-            sb.append(choice).append(" ");
+            sb.append(option).append(". ").append(choice).append("\n");
+            option++;
         }
-        sb.append(correctAnswer);
+        sb.append("Answer: ");
         return sb.toString();
     }
 }
