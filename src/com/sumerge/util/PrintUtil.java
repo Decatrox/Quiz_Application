@@ -2,27 +2,37 @@ package com.sumerge.util;
 
 public class PrintUtil {
     public void printCorrect() {
-        System.out.println("Correct!");
+        System.out.println("Correct!\n");
     }
 
-    public void printWrong(String answer) {
-        System.out.println("Wrong!");
-        System.out.println("Correct Answer: " + answer);
+    public void printWrong(String correctAnswer) {
+        System.out.printf("Wrong!\nCorrect Answer: %s\n\n", correctAnswer);
     }
 
     public void printInvalidInput() {
-        System.out.println("Invalid input, try again");
+        System.out.println("Invalid input, try again.\n");
     }
 
-    public void printScore(int score) throws InterruptedException {
-        System.out.print("\n\n\n\n\n\n\n\n\n                Score: " + score);
+    public void printScore(int score) {
+        System.out.printf("\n\n\n\n\n\n\n\n\n                Score: %d\n", score);
     }
 
-    public void printEndOfQuiz(String userName, int score, int bestScore){
-        System.out.println("\n\n\n\n\n\nYour final score is: " + score);
-        System.out.println("Your best score is: " + bestScore + "\n\n\n");
-        System.out.println("Hope you did well " + userName);
-        System.out.println("Enter the name of the next student or enter exit if everyone is done");
-        System.out.print("Name: ");
+    public void printEndOfQuiz(String userName, int score, int bestScore) {
+        System.out.printf("""
+
+
+
+
+
+
+                        Your final score is: %d
+                        Your best score is: %d
+
+
+                        Hope you did well, %s
+
+                        Enter the name of the next student or enter 'exit' if everyone is done.
+                        Name:\s"""
+                , score, bestScore, userName);
     }
 }
