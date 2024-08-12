@@ -1,5 +1,7 @@
 package com.sumerge;
 
+import com.sumerge.mapper.AnswerStatusMapper;
+import com.sumerge.question.QuestionReader;
 import com.sumerge.quiz.QuizManager;
 import com.sumerge.user.User;
 import com.sumerge.util.Config;
@@ -16,19 +18,21 @@ import java.util.Scanner;
 public class QuizApplication
 {
 
-
     public static void main( String[] args ) throws IOException, InterruptedException {
-        Scanner sc = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
+        final AnswerStatusMapper answerStatusMapper = new AnswerStatusMapper();
+        final QuestionReader questionReader = new QuestionReader();
+        final PrintUtil printUtil = new PrintUtil();
+        final StoreUtil storeUtil = new StoreUtil();
+        final QuizManager quizManager = new QuizManager(answerStatusMapper, questionReader, scanner, printUtil);
+
         HashMap<String, ArrayList<Integer>> user_scores_hm = new HashMap<>();
-        QuizManager quizManager = new QuizManager();
         String questionBankPath = Config.getQuestionBankPath();
         String outputFilePath = Config.getOutputFilePath();
-        PrintUtil printUtil = new PrintUtil();
-        StoreUtil storeUtil = new StoreUtil();
         int quizSize = Config.getQuizSize();
-        System.out.print("Name: ");
-        String userName = sc.nextLine();
         int score;
+        System.out.print("Name: ");
+        String userName = scanner.nextLine();
 
         while (!userName.equals("exit")) {
             User user = new User(userName);
@@ -38,7 +42,7 @@ public class QuizApplication
             int maxScore = user_scores_hm.get(userName).stream().max(Integer::compareTo).orElse(0);
             printUtil.printEndOfQuiz(userName, score, maxScore);
             storeUtil.storeScore(userName, score, outputFilePath);
-            userName = sc.nextLine();
+            userName = scanner.nextLine();
         }
 
         Desktop desktop = Desktop.getDesktop();
